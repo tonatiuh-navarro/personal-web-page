@@ -3,7 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>José Tonatiuh Navarro Silva | Ingeniero Financiero</title>
+    <title>José Tonatiuh Navarro Silva | Ingeniero Financiero - Especialista en Chatbots Financieros</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="José Tonatiuh Navarro Silva, Ingeniero Financiero egresado del ITESO. Especialista en desarrollo de chatbots financieros inteligentes y soluciones de IA para el sector financiero.">
+    <meta name="keywords" content="ingeniero financiero, chatbot financiero, inteligencia artificial, ITESO, Guadalajara, asesoría financiera, automatización financiera">
+    <meta name="author" content="José Tonatiuh Navarro Silva">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tonatiuh-navarro.com/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="José Tonatiuh Navarro Silva | Ingeniero Financiero - Especialista en Chatbots Financieros">
+    <meta property="og:description" content="Especialista en desarrollo de chatbots financieros inteligentes con formación sólida del ITESO Universidad Jesuita de Guadalajara">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tonatiuh-navarro.com/">
+    <meta property="og:site_name" content="José Tonatiuh Navarro Silva">
+    <meta property="og:locale" content="es_MX">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="José Tonatiuh Navarro Silva | Ingeniero Financiero">
+    <meta name="twitter:description" content="Especialista en chatbots financieros inteligentes - ITESO Universidad Jesuita de Guadalajara">
+    
+    <!-- Additional SEO -->
+    <meta name="geo.region" content="MX-JAL">
+    <meta name="geo.placename" content="Guadalajara">
+    <meta name="language" content="Spanish">
     <style>
         * {
             margin: 0;
@@ -144,7 +169,6 @@
         .hero .subtitle {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
-            opacity: 0.9;
             opacity: 0;
             animation: fadeInUp 1s ease 0.7s forwards;
             font-weight: 400;
@@ -153,7 +177,6 @@
         .hero .description {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 0.8;
             opacity: 0;
             animation: fadeInUp 1s ease 0.9s forwards;
             max-width: 600px;
@@ -588,15 +611,149 @@
             z-index: 10000;
             transition: width 0.1s ease;
         }
+
+        /* Accessibility improvements */
+        *:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        .nav-menu a:focus,
+        .cta-button:focus,
+        .service-button:focus,
+        .submit-btn:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* Skip to main content link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--accent-color);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10001;
+            border-radius: 0 0 4px 4px;
+            font-weight: 500;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Improved mobile navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                text-align: center;
+                font-size: 1.1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero .description {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form,
+            .contact-info {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .service-card {
+                margin: 0.5rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-form,
+            .contact-info {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#home" class="skip-link">Saltar al contenido principal</a>
     <div class="scroll-indicator"></div>
     
-    <header class="header">
+    <header class="header" role="banner">
         <div class="nav-container">
             <a href="#home" class="logo">Tonatiuh Navarro</a>
-            <nav>
+            <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                ☰
+            </button>
+            <nav role="navigation" aria-label="Navegación principal">
                 <ul class="nav-menu">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#about">Acerca de</a></li>
@@ -607,7 +764,7 @@
         </div>
     </header>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero" role="main" aria-label="Sección principal">
         <div class="hero-content">
             <h1>José Tonatiuh Navarro Silva</h1>
             <p class="subtitle">Ingeniero Financiero</p>
@@ -616,7 +773,7 @@
         </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="about" class="section" aria-label="Información personal">
         <h2 class="section-title fade-in">Acerca de mí</h2>
         <div class="about-content">
             <div class="about-text fade-in">
@@ -648,17 +805,17 @@
         </div>
     </section>
 
-    <section id="services" class="section services">
+    <section id="services" class="section services" aria-label="Servicios ofrecidos">
         <h2 class="section-title fade-in">Mi Servicio</h2>
         <div class="service-card fade-in">
             <div class="service-icon">🤖</div>
             <h3>Chatbot Financiero Inteligente</h3>
             <p>Desarrollo de asistentes virtuales especializados en servicios financieros, capaces de proporcionar asesoría automatizada, análisis de datos financieros en tiempo real y respuestas precisas a consultas complejas del sector financiero.</p>
-            <button class="service-button" onclick="goToChatbotDemo()">Ver Demo</button>
+            <button class="service-button" onclick="goToChatbotDemo()" aria-label="Ver demostración del chatbot financiero">Ver Demo</button>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section" aria-label="Información de contacto">
         <h2 class="section-title fade-in">Contacto</h2>
         <div class="contact-content">
             <div class="contact-info fade-in">
@@ -694,7 +851,7 @@
             </div>
             <div class="contact-form fade-in">
                 <h3>Enviar mensaje</h3>
-                <form>
+                <form role="form" aria-label="Formulario de contacto">
                     <div class="form-group">
                         <label for="name">Nombre completo</label>
                         <input type="text" id="name" name="name" required>
@@ -711,13 +868,13 @@
                         <label for="message">Mensaje</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Enviar mensaje</button>
+                    <button type="submit" class="submit-btn" aria-label="Enviar mensaje de contacto">Enviar mensaje</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="social-links">
             <a href="https://www.linkedin.com/in/tonatiuh-navarro-silva-654127203/" class="social-link" target="_blank">
                 LinkedIn
@@ -787,29 +944,118 @@
             }
         });
 
+        // Form validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function validateForm(formData) {
+            const errors = [];
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const subject = formData.get('subject').trim();
+            const message = formData.get('message').trim();
+
+            if (name.length < 2) {
+                errors.push('El nombre debe tener al menos 2 caracteres');
+            }
+
+            if (!validateEmail(email)) {
+                errors.push('Por favor ingresa un correo electrónico válido');
+            }
+
+            if (subject.length < 3) {
+                errors.push('El asunto debe tener al menos 3 caracteres');
+            }
+
+            if (message.length < 10) {
+                errors.push('El mensaje debe tener al menos 10 caracteres');
+            }
+
+            return errors;
+        }
+
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 5px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                max-width: 350px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Hide notification after 5 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+
         // Form submission
         document.querySelector('.contact-form form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form data
             const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
+            const name = formData.get('name').trim();
+            const email = formData.get('email').trim();
+            const subject = formData.get('subject').trim();
+            const message = formData.get('message').trim();
+            
+            // Validate form
+            const errors = validateForm(formData);
+            
+            if (errors.length > 0) {
+                showNotification(errors.join('. '), 'error');
+                return;
+            }
             
             // Create WhatsApp message
             const whatsappMessage = `Hola José Tonatiuh, soy ${name} (${email}). ${subject}: ${message}`;
             const whatsappURL = `https://wa.me/523312236275?text=${encodeURIComponent(whatsappMessage)}`;
             
-            // Open WhatsApp
-            window.open(whatsappURL, '_blank');
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
             
-            // Reset form
-            this.reset();
-            
-            // Show confirmation
-            alert('Gracias por tu mensaje. Te redirigimos a WhatsApp.');
+            // Simulate processing time
+            setTimeout(() => {
+                // Open WhatsApp
+                window.open(whatsappURL, '_blank');
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Show success notification
+                showNotification('¡Gracias por tu mensaje! Te redirigimos a WhatsApp para completar el envío.');
+            }, 1000);
         });
 
         // Add hover effects to service card
@@ -819,6 +1065,49 @@
         
         document.querySelector('.service-card').addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle menu
+            navMenu.classList.toggle('active');
+            
+            // Update aria attributes
+            this.setAttribute('aria-expanded', !isExpanded);
+            
+            // Change icon
+            this.textContent = isExpanded ? '☰' : '✕';
+        });
+
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.textContent = '☰';
+            }
+        });
+
+        // Keyboard navigation for mobile menu
+        mobileMenuToggle.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                this.click();
+            }
         });
     </script>
 </body>
