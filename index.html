@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Tonatiuh Navarro Silva | Ingeniero Financiero - Especialista en Chatbots Financieros</title>
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- SEO Meta Tags -->
     <meta name="description" content="José Tonatiuh Navarro Silva, Ingeniero Financiero egresado del ITESO. Especialista en desarrollo de chatbots financieros inteligentes y soluciones de IA para el sector financiero.">
     <meta name="keywords" content="ingeniero financiero, chatbot financiero, inteligencia artificial, ITESO, Guadalajara, asesoría financiera, automatización financiera">
@@ -37,22 +42,76 @@
         }
 
         :root {
-            --primary-color: #1a1a2e;
-            --secondary-color: #16213e;
-            --accent-color: #e94560;
-            --text-dark: #0f0f23;
-            --text-light: #4a4a6a;
-            --background-light: #f8f9fa;
+            --primary-color: #1a365d;
+            --secondary-color: #3182ce;
+            --accent-color: #667eea;
+            --text-dark: #1a202c;
+            --text-light: #718096;
+            --background-light: #f7fafc;
             --white: #ffffff;
-            --gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --dark-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            --gray-light: #e2e8f0;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dark-gradient: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            /* Dark mode colors */
+            --dark-bg: #1a202c;
+            --dark-surface: #2d3748;
+            --dark-text: #f7fafc;
+            --dark-text-muted: #a0aec0;
+            
+            /* Font families */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            
+            /* Font sizes - Mobile first */
+            --font-size-base: 16px;
+            --font-size-sm: 14px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-2xl: 24px;
+            --font-size-3xl: 30px;
+            --font-size-4xl: 36px;
+            --font-size-5xl: 48px;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+        }
+        
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --text-dark: var(--dark-text);
+            --text-light: var(--dark-text-muted);
+            --background-light: var(--dark-bg);
+            --white: var(--dark-surface);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-primary);
+            font-size: var(--font-size-base);
             line-height: 1.6;
             color: var(--text-dark);
             scroll-behavior: smooth;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23667eea" opacity="0.3"/><circle cx="10" cy="10" r="3" fill="%23667eea"/></svg>') 10 10, auto;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Custom cursor effects */
+        a, button, [role="button"], input[type="submit"], input[type="button"] {
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23764ba2" opacity="0.4"/><circle cx="12" cy="12" r="4" fill="%23764ba2"/></svg>') 12 12, pointer;
+        }
+        
+        /* Responsive typography */
+        @media (min-width: 768px) {
+            body {
+                font-size: var(--font-size-lg);
+            }
         }
 
         /* Header & Navigation */
@@ -121,11 +180,168 @@
         .nav-menu a:hover::after {
             width: 100%;
         }
+        
+        /* Dark mode toggle */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            padding: 0.5rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* Mobile navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+                gap: 1.5rem;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu a {
+                font-size: var(--font-size-lg);
+                padding: 1rem;
+            }
+            
+            .theme-toggle {
+                position: fixed;
+                top: 15px;
+                right: 70px;
+                z-index: 1002;
+            }
+        }
 
+        /* CSS Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent-color); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Fade in on scroll animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: var(--gradient);
+            background: var(--hero-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
