@@ -2,13 +2,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>José Tonatiuh Navarro Silva | Ingeniero Financiero - Especialista en Chatbots Financieros</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Optimized loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="José Tonatiuh Navarro Silva, Ingeniero Financiero egresado del ITESO. Especialista en desarrollo de chatbots financieros inteligentes y soluciones de IA para el sector financiero.">
@@ -64,24 +69,24 @@
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             
-            /* Font sizes - Mobile first */
-            --font-size-base: 16px;
-            --font-size-sm: 14px;
-            --font-size-lg: 18px;
-            --font-size-xl: 20px;
-            --font-size-2xl: 24px;
-            --font-size-3xl: 30px;
-            --font-size-4xl: 36px;
-            --font-size-5xl: 48px;
+            /* Font sizes - Mobile first with fluid scaling */
+            --font-size-base: clamp(16px, 4vw, 18px);
+            --font-size-sm: clamp(14px, 3.5vw, 16px);
+            --font-size-lg: clamp(18px, 4.5vw, 20px);
+            --font-size-xl: clamp(20px, 5vw, 24px);
+            --font-size-2xl: clamp(24px, 6vw, 28px);
+            --font-size-3xl: clamp(28px, 7vw, 36px);
+            --font-size-4xl: clamp(32px, 8vw, 48px);
+            --font-size-5xl: clamp(40px, 10vw, 64px);
             
-            /* Spacing */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            --spacing-3xl: 4rem;
+            /* Spacing - Responsive */
+            --spacing-xs: clamp(0.25rem, 1vw, 0.5rem);
+            --spacing-sm: clamp(0.5rem, 2vw, 1rem);
+            --spacing-md: clamp(1rem, 3vw, 1.5rem);
+            --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+            --spacing-xl: clamp(2rem, 5vw, 3rem);
+            --spacing-2xl: clamp(2.5rem, 6vw, 4rem);
+            --spacing-3xl: clamp(3rem, 8vw, 5rem);
         }
         
         /* Dark mode variables */
@@ -98,13 +103,17 @@
             line-height: 1.6;
             color: var(--text-dark);
             scroll-behavior: smooth;
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23667eea" opacity="0.3"/><circle cx="10" cy="10" r="3" fill="%23667eea"/></svg>') 10 10, auto;
             transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         
-        /* Custom cursor effects */
+        /* Touch-friendly interactive elements */
         a, button, [role="button"], input[type="submit"], input[type="button"] {
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="%23764ba2" opacity="0.4"/><circle cx="12" cy="12" r="4" fill="%23764ba2"/></svg>') 12 12, pointer;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(26, 54, 93, 0.2);
+            touch-action: manipulation;
         }
         
         /* Responsive typography */
@@ -112,6 +121,22 @@
             body {
                 font-size: var(--font-size-lg);
             }
+        }
+        
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        /* Smooth scrolling for all elements */
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        /* Improve touch scrolling on iOS */
+        body {
+            -webkit-overflow-scrolling: touch;
         }
 
         /* Header & Navigation */
@@ -204,70 +229,118 @@
             transform: scale(1.1);
         }
         
-        /* Hamburger menu */
-        .hamburger {
+        /* Mobile menu toggle button */
+        .mobile-menu-toggle {
             display: none;
-            flex-direction: column;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-color);
             cursor: pointer;
-            padding: 0.5rem;
+            padding: var(--spacing-sm);
+            min-width: 48px;
+            min-height: 48px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
             z-index: 1001;
         }
         
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
+        .mobile-menu-toggle:hover {
+            background: rgba(26, 54, 93, 0.1);
+            transform: scale(1.05);
         }
         
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
+        .mobile-menu-toggle:active {
+            transform: scale(0.95);
         }
         
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        /* Mobile navigation */
+        /* Enhanced Mobile navigation */
         @media (max-width: 768px) {
-            .hamburger {
+            .mobile-menu-toggle {
                 display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .nav-menu {
                 position: fixed;
+                top: 0;
                 left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: var(--white);
                 width: 100%;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--white) 0%, var(--background-light) 100%);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                padding: 2rem 0;
-                gap: 1.5rem;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+                padding: var(--spacing-2xl);
+                gap: var(--spacing-xl);
+                z-index: 1000;
+                backdrop-filter: blur(20px);
             }
             
             .nav-menu.active {
                 left: 0;
             }
             
+            .nav-menu li {
+                transform: translateX(-50px);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+            
+            .nav-menu.active li {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            
+            .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+            .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+            .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+            
             .nav-menu a {
-                font-size: var(--font-size-lg);
-                padding: 1rem;
+                font-size: var(--font-size-2xl);
+                padding: var(--spacing-lg);
+                display: block;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                min-width: 200px;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .nav-menu a::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(26, 54, 93, 0.1), transparent);
+                transition: left 0.5s ease;
+            }
+            
+            .nav-menu a:hover::before {
+                left: 100%;
+            }
+            
+            .nav-menu a:hover {
+                background: rgba(26, 54, 93, 0.05);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             }
             
             .theme-toggle {
                 position: fixed;
-                top: 15px;
-                right: 70px;
+                top: 20px;
+                right: 80px;
                 z-index: 1002;
+                min-width: 48px;
+                min-height: 48px;
             }
         }
 
@@ -340,6 +413,7 @@
         
         /* Hero Section */
         .hero {
+            min-height: 100vh;
             height: 100vh;
             background: var(--hero-gradient);
             display: flex;
@@ -349,6 +423,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            padding: var(--spacing-xl) var(--spacing-md);
         }
 
         .hero::before {
@@ -367,54 +442,64 @@
         }
 
         .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
+            max-width: min(800px, 95vw);
+            padding: 0 var(--spacing-md);
             z-index: 1;
             position: relative;
+            width: 100%;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: var(--font-size-5xl);
+            margin-bottom: var(--spacing-md);
             opacity: 0;
             animation: fadeInUp 1s ease 0.5s forwards;
             font-weight: 300;
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .hero .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-sm);
             opacity: 0;
             animation: fadeInUp 1s ease 0.7s forwards;
             font-weight: 400;
+            line-height: 1.2;
         }
 
         .hero .description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-xl);
             opacity: 0;
             animation: fadeInUp 1s ease 0.9s forwards;
-            max-width: 600px;
+            max-width: min(600px, 90vw);
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.4;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 15px 35px;
+            padding: var(--spacing-lg) var(--spacing-2xl);
             background: transparent;
             color: white;
             text-decoration: none;
             border: 2px solid white;
-            border-radius: 5px;
+            border-radius: 12px;
             font-weight: 500;
             transition: all 0.3s ease;
             opacity: 0;
             animation: fadeInUp 1s ease 1.1s forwards;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-size: var(--font-size-base);
+            min-width: 200px;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .cta-button:hover {
@@ -434,12 +519,13 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--spacing-2xl);
             color: var(--text-dark);
             position: relative;
             font-weight: 300;
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .section-title::after {
@@ -576,15 +662,21 @@
         .service-button {
             background: var(--gradient);
             color: white;
-            padding: 12px 25px;
+            padding: var(--spacing-lg) var(--spacing-xl);
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.8rem;
+            font-size: var(--font-size-base);
+            min-width: 160px;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         .service-button:hover {
@@ -686,18 +778,22 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #e1e5e9;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
+            padding: var(--spacing-lg);
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: var(--font-size-base);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
             font-family: inherit;
+            min-height: 48px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
         }
 
         .form-group textarea {
@@ -707,17 +803,21 @@
 
         .submit-btn {
             width: 100%;
-            padding: 15px;
+            padding: var(--spacing-lg);
             background: var(--gradient);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: var(--font-size-lg);
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .submit-btn:hover {
@@ -785,34 +885,41 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .hero {
+                min-height: 100svh; /* Use small viewport height for mobile */
+                padding: var(--spacing-2xl) var(--spacing-md);
             }
-
-            .hero h1 {
-                font-size: 2.5rem;
+            
+            .hero-content {
+                padding: 0 var(--spacing-sm);
             }
 
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: var(--spacing-xl);
             }
 
             .about-stats {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-md);
             }
 
             .section {
-                padding: 3rem 1rem;
+                padding: var(--spacing-2xl) var(--spacing-md);
             }
 
             .nav-container {
-                padding: 0 1rem;
+                padding: 0 var(--spacing-md);
             }
 
             .service-card {
-                margin: 1rem;
+                margin: var(--spacing-md);
+                padding: var(--spacing-xl) var(--spacing-lg);
+            }
+            
+            .stat-card {
+                padding: var(--spacing-xl) var(--spacing-lg);
             }
         }
 
@@ -837,9 +944,41 @@
         .nav-menu a:focus,
         .cta-button:focus,
         .service-button:focus,
-        .submit-btn:focus {
+        .submit-btn:focus,
+        .mobile-menu-toggle:focus {
             outline: 3px solid var(--accent-color);
             outline-offset: 2px;
+        }
+        
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Error message styling */
+        .error-message {
+            color: #dc3545;
+            font-size: var(--font-size-sm);
+            margin-top: var(--spacing-xs);
+            display: none;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
         }
 
         /* Skip to main content link */
@@ -860,101 +999,39 @@
             top: 0;
         }
 
-        /* Improved mobile navigation */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
 
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .nav-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-menu li {
-                margin: 0.5rem 0;
-            }
-
-            .nav-menu a {
-                display: block;
-                padding: 1rem;
-                text-align: center;
-                font-size: 1.1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .hero .description {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form,
-            .contact-info {
-                padding: 2rem;
-            }
-        }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
+            .hero {
+                min-height: 100svh;
+                padding: var(--spacing-xl) var(--spacing-sm);
             }
-
-            .hero .subtitle {
-                font-size: 1.1rem;
+            
+            .hero-content {
+                padding: 0;
             }
 
             .section {
-                padding: 2rem 1rem;
+                padding: var(--spacing-xl) var(--spacing-sm);
             }
 
             .service-card {
-                margin: 0.5rem;
-                padding: 2rem 1.5rem;
+                margin: var(--spacing-sm);
+                padding: var(--spacing-lg) var(--spacing-md);
             }
 
             .contact-form,
             .contact-info {
-                padding: 1.5rem;
+                padding: var(--spacing-lg);
+            }
+            
+            .nav-container {
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .mobile-menu-toggle {
+                min-width: 44px;
+                min-height: 44px;
             }
         }
     </style>
@@ -966,11 +1043,12 @@
     <header class="header" role="banner">
         <div class="nav-container">
             <a href="#home" class="logo">Tonatiuh Navarro</a>
-            <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-                ☰
+            <button class="mobile-menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="nav-menu">
+                <span aria-hidden="true">☰</span>
+                <span class="sr-only">Menú</span>
             </button>
             <nav role="navigation" aria-label="Navegación principal">
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="nav-menu" aria-hidden="true">
                     <li><a href="#home">Inicio</a></li>
                     <li><a href="#about">Acerca de</a></li>
                     <li><a href="#services">Servicios</a></li>
@@ -1067,22 +1145,26 @@
             </div>
             <div class="contact-form fade-in">
                 <h3>Enviar mensaje</h3>
-                <form role="form" aria-label="Formulario de contacto">
+                <form role="form" aria-label="Formulario de contacto" novalidate>
                     <div class="form-group">
                         <label for="name">Nombre completo</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required aria-describedby="name-error" autocomplete="name">
+                        <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
                     </div>
                     <div class="form-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required aria-describedby="email-error" autocomplete="email">
+                        <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
                     </div>
                     <div class="form-group">
                         <label for="subject">Asunto</label>
-                        <input type="text" id="subject" name="subject" required>
+                        <input type="text" id="subject" name="subject" required aria-describedby="subject-error">
+                        <div id="subject-error" class="error-message" role="alert" aria-live="polite"></div>
                     </div>
                     <div class="form-group">
                         <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message" required aria-describedby="message-error" rows="5"></textarea>
+                        <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
                     </div>
                     <button type="submit" class="submit-btn" aria-label="Enviar mensaje de contacto">Enviar mensaje</button>
                 </form>
@@ -1228,9 +1310,12 @@
             }, 5000);
         }
 
-        // Form submission
+        // Enhanced form submission with accessibility
         document.querySelector('.contact-form form').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Clear previous errors
+            clearAllErrors();
             
             // Get form data
             const formData = new FormData(this);
@@ -1239,11 +1324,34 @@
             const subject = formData.get('subject').trim();
             const message = formData.get('message').trim();
             
-            // Validate form
+            // Validate form with field-specific errors
             const errors = validateForm(formData);
+            let hasErrors = false;
             
-            if (errors.length > 0) {
-                showNotification(errors.join('. '), 'error');
+            if (name.length < 2) {
+                showFieldError('name', 'El nombre debe tener al menos 2 caracteres');
+                hasErrors = true;
+            }
+            
+            if (!validateEmail(email)) {
+                showFieldError('email', 'Por favor ingresa un correo electrónico válido');
+                hasErrors = true;
+            }
+            
+            if (subject.length < 3) {
+                showFieldError('subject', 'El asunto debe tener al menos 3 caracteres');
+                hasErrors = true;
+            }
+            
+            if (message.length < 10) {
+                showFieldError('message', 'El mensaje debe tener al menos 10 caracteres');
+                hasErrors = true;
+            }
+            
+            if (hasErrors) {
+                // Focus first error field
+                const firstError = document.querySelector('.form-group.error input, .form-group.error textarea');
+                if (firstError) firstError.focus();
                 return;
             }
             
@@ -1283,48 +1391,130 @@
             this.style.transform = 'translateY(0) scale(1)';
         });
 
-        // Mobile menu functionality
+        // Enhanced mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navMenu = document.querySelector('.nav-menu');
+        const navMenuIcon = mobileMenuToggle.querySelector('span[aria-hidden="true"]');
 
-        mobileMenuToggle.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
             
             // Toggle menu
             navMenu.classList.toggle('active');
             
             // Update aria attributes
-            this.setAttribute('aria-expanded', !isExpanded);
+            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.setAttribute('aria-hidden', isExpanded);
             
             // Change icon
-            this.textContent = isExpanded ? '☰' : '✕';
-        });
+            navMenuIcon.textContent = isExpanded ? '☰' : '✕';
+            
+            // Manage body scroll
+            document.body.style.overflow = isExpanded ? 'auto' : 'hidden';
+            
+            // Focus management
+            if (!isExpanded) {
+                // Focus first menu item when opening
+                setTimeout(() => {
+                    const firstMenuItem = navMenu.querySelector('a');
+                    if (firstMenuItem) firstMenuItem.focus();
+                }, 100);
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
         // Close mobile menu when clicking on nav links
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.textContent = '☰';
+                navMenu.setAttribute('aria-hidden', 'true');
+                navMenuIcon.textContent = '☰';
+                document.body.style.overflow = 'auto';
+                mobileMenuToggle.focus();
             });
         });
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-container')) {
+            if (!event.target.closest('.nav-container') && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
                 mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.textContent = '☰';
+                navMenu.setAttribute('aria-hidden', 'true');
+                navMenuIcon.textContent = '☰';
+                document.body.style.overflow = 'auto';
             }
         });
 
-        // Keyboard navigation for mobile menu
+        // Enhanced keyboard navigation
         mobileMenuToggle.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
-                this.click();
+                toggleMobileMenu();
             }
         });
+        
+        // Escape key to close mobile menu
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+                navMenuIcon.textContent = '☰';
+                document.body.style.overflow = 'auto';
+                mobileMenuToggle.focus();
+            }
+        });
+        
+        // Trap focus within mobile menu when open
+        navMenu.addEventListener('keydown', function(event) {
+            if (event.key === 'Tab' && navMenu.classList.contains('active')) {
+                const focusableElements = navMenu.querySelectorAll('a');
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (event.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        event.preventDefault();
+                        lastElement.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        event.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+        });
+        
+        // Form validation with accessibility
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            const errorDiv = formGroup.querySelector('.error-message');
+            
+            formGroup.classList.add('error');
+            errorDiv.textContent = message;
+            field.setAttribute('aria-invalid', 'true');
+        }
+        
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            const errorDiv = formGroup.querySelector('.error-message');
+            
+            formGroup.classList.remove('error');
+            errorDiv.textContent = '';
+            field.setAttribute('aria-invalid', 'false');
+        }
+        
+        function clearAllErrors() {
+            document.querySelectorAll('.form-group.error').forEach(group => {
+                const field = group.querySelector('input, textarea');
+                clearFieldError(field.id);
+            });
+        }
     </script>
 </body>
 </html>
